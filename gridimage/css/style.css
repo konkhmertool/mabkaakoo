@@ -49,7 +49,7 @@ ul, li {list-style-type: none;padding:0;margin:0;}
 .wrap_thumbnail2 .dv_cover_bg{right:0;width:32.9305%;height:100%;}
 .wrap_thumbnail2 .dv_cover_number{right:0;width:32.9305%;height:100%;}
 
-.wrap_thumbnail3,.wrap_thumbnail4,.wrap_thumbnail5,.wrap_thumbnail6,.wrap_thumbnail7,.wrap_thumbnail8,.wrap_thumbnail10,.wrap_thumbnail11{width:750px;height:900px;}
+.wrap_thumbnail3,.wrap_thumbnail4,.wrap_thumbnail5,.wrap_thumbnail6,.wrap_thumbnail7,.wrap_thumbnail8,.wrap_thumbnail10,.wrap_thumbnail11{width:750px;height:950px;overflow:hidden}
 
 .wrap_thumbnail3 .dv_t2_grid{position:relative;width:100%;height:55%}
 .wrap_thumbnail3 .dv_t2_top div.dv_t2_ch{width:100%;height:100%;}
@@ -61,8 +61,8 @@ ul, li {list-style-type: none;padding:0;margin:0;}
 
 .wrap_thumbnail4 .dv_t2_grid{position:relative;float:left;width:60%;height:100%}
 .wrap_thumbnail4 .dv_t2_top div.dv_t2_ch{width:100%;height:100%;}
-.wrap_thumbnail4 .dv_t2_bottom{position:relative;width:39.60%;height:100%;margin-left:3px;}
-.wrap_thumbnail4 .dv_t2_bottom div.dv_t2_ch{float:left;width:100%;height:33.0666%}
+.wrap_thumbnail4 .dv_t2_bottom{position:relative;width:39.6024%;height:100%;margin-left:3px;}
+.wrap_thumbnail4 .dv_t2_bottom div.dv_t2_ch{float:left;width:100%;height:33.1666%}
 .wrap_thumbnail4 .dv_t2_bottom div.dv_t2_ch:nth-child(2){margin:3px 0 3px 0;}
 .wrap_thumbnail4 .dv_cover_bg{right:0;width:100%;height:33.0666%;}
 .wrap_thumbnail4 .dv_cover_number{right:0;width:100%;height:33.0666%;}
