@@ -159,7 +159,7 @@ $(document).ready(function() {
         				}
         			 }, 1000);
         		});
-        	}
+        	} // End-function Make_Download
         	$("input[type='text']").on("focus", function () {
         		window.setTimeout(function () {
         	        
