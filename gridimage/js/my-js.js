@@ -128,7 +128,7 @@ $(document).ready(function() {
         		
         		var elem = $(this);
         		var this_wrap_thumbnail = elem.attr("data-thumnail");
-        		Make_Download($(this),this_wrap_thumbnail, "0-sqr");
+        		Make_Download($(this),this_wrap_thumbnail, "1-sqr");
         		
         		//$("<link id='myStyle2' href='css/style2.css' rel='stylesheet'/>").appendTo("head");
         	});
