@@ -172,7 +172,7 @@ var jqXHR;
                             + "<textarea id='txtLinkTitle"+i+"' rows='5' cols='100%' readonly class='form-control tareapstctn tareapstctnblogger' onmouseup='mouseUpOnPc(this)'>" + tmpTextArea + "</textarea>" //onfocus='focusMe(this)'
                             + "<div class='dvpstctnSendBoomNews'>"
                             + "<input type='button' data-blogid='"+tmpBloggerId+"' data-url='" + postUrl + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' data-desc='" + tmpDesc + "' data-tags='" + str_tags + "' data-content='"+tmpTextContent+"' class='btn btnleft btn-primary btnCopyNews' value='COPY Ctn'>"
-                            + "<input type='button' data-blogid='"+tmpBloggerId+"' data-url='" + tmpPostUrl + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' data-qparam='"+q_parameter+"' class='btn btnmiddle btn-primary btnShortLink' value='COPY Link'>"
+                            + "<input type='button' data-blogid='"+tmpBloggerId+"' data-url='" + tmpPostUrl + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' data-qparam='"+q_parameter+"' class='btn btnmiddle btn-primary btnShortLink' value='COPY Title'>"
                             + "<input type='button' data-toggle='modal' data-value='200' data-blogid='"+tmpBloggerId+"' data-url='" + postUrl + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' class='btn btnright btn-warning openModalPostContentSendBoomNews' value='Boom'></div>"
                             + "</li>"
                             + "<li>"
@@ -223,7 +223,7 @@ var jqXHR;
 	    }
 	    if(objIsBtnCopyLink){
 	        	// Set new value of content with zerospace to text area
-	    		objThisTxt.val(tmpUrl);
+	    		objThisTxt.val(tmpTitle);
 	    }
 	    
 	    var copyText = document.getElementById(objThisTxtId);
