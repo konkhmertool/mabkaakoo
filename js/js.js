@@ -244,7 +244,7 @@ var jqXHR;
 			objThis.addClass("btnCopiedURLTitle").delay(1000).queue(function(){
 	        objThis.removeClass("btnCopiedURLTitle").dequeue();
 	        objThis.prop('value', 'COPY Ctn');
-	        if(objIsBtnCopyLink){objThis.prop('value', 'COPY Link');}
+	        if(objIsBtnCopyLink){objThis.prop('value', 'COPY Title');}
 	     	// clear background after 1 second
 	        //if(objThisTxt) objThisTxt.css("background-color", "#fdfdfd");
 	        //Remove focus from textarea | and selected
