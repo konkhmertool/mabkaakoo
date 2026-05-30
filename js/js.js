@@ -31,9 +31,10 @@ var jqXHR;
     });
     
     $("#blogContainerPostContent").on(
-    "click touchstart",
+    "click touchend",
     "textarea.form-control.tareapstctn.tareapstctnblogger",
-        function () {
+        function (e) {
+            e.preventDefault();
             var textarea = this;
 
             // Select all text
@@ -42,37 +43,43 @@ var jqXHR;
             textarea.setSelectionRange(0, textarea.value.length);
 
             // Copy to clipboard
-            if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(textarea.value);
-            } else {
-            document.execCommand("copy");
+            var copied = false;
+            try {
+                copied = document.execCommand("copy");
+            } catch (err) {
+                copied = false;
             }
 
-            // Optional highlight
-            $(".tareapstctn").css("background-color", "#fdfdfd");
-            $(textarea).css("background-color", "#cecece");
-
-            // Remove previous toast
-            var $toast = $("<div class='copy-toast'>✓ Copied</div>");
-            $("body").append($toast);
-
-            // make it measurable first
-            $toast.show();
-
-            var offset = $(textarea).offset();
-
-            $toast.css({
-                left: offset.left + ($(textarea).outerWidth() / 2),
-                top: offset.top + ($(textarea).outerHeight() / 2)
-            });
-
-            $toast.fadeIn(200)
-                .delay(1000)
-                .fadeOut(500, function () {
-                    //$(this).remove();
-                });
+            if (copied) {
+                showCopiedToast(textarea);
+            }            
         }
     );
+
+    function showCopiedToast(textarea){
+        // Optional highlight
+        $(".tareapstctn").css("background-color", "#fdfdfd");
+        $(textarea).css("background-color", "#cecece");
+        
+        $(".copy-toast").remove();
+
+        var $toast = $("<div class='copy-toast'>✓ Copied</div>");
+        $("body").append($toast);
+
+        var offset = $(textarea).offset();
+
+        $toast.css({
+            left: offset.left + ($(textarea).outerWidth() / 2),
+            top: offset.top + ($(textarea).outerHeight() / 2)
+        });
+
+        $toast.hide()
+            .fadeIn(200)
+            .delay(1000)
+            .fadeOut(500, function(){
+                $(this).remove();
+            });
+    }
 
     function getBloggerPost(tmpBloggerId) {
         // before update content must clear the old content first
