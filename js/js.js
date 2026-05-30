@@ -98,9 +98,9 @@ var jqXHR;
                     tmpTitle = tmpTitle.trim(); // remove white space first and last
                     // 
                     var tmpLabel = "";
-                    if(data.feed.entry[i].category[0].term){
-                    		tmpLabel = "#" + data.feed.entry[i].category[0].term;
-                    }
+                    const category = data.feed.entry[i].category?.[0]?.term || "";
+                    tmpLabel = category ? "#" + category : "";                    
+
                     var arr = ['#ข่าวสังคม','#ข่าวดารา','#ข่าวบันเทิง','#คลิป'];
                     	// Remove html tag get text only
                 		var tmp_tags = "";
