@@ -17,8 +17,9 @@ div p{margin:0}
 
 body .wrap_content{width:1280px;margin:0 auto;padding:10px;background:#fff}
 body .wrap_content .dv_mobilepulldownrefresh{display:none;text-align:center}
-
-body .wrap_content .form_message{}
+body .wrap_content .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio]{position: unset;margin: unset;}
+body .wrap_content .dv_wrap_domainlabel{font-size: 1.5em;}
+body .wrap_content .dv_wrap_domainlabel input[type=radio]{margin-right: 5px;}
 body .wrap_content .dv_wrapmessage{width:100%;padding:0}
 body .wrap_content .dv_wrapmessage .dv_displaymsg{margin-top:5px;padding:5px 10px 0}
 body .wrap_content .dv_wrapmessage .dv_displaymsg > div{float:left;width:25%;margin-bottom:5px;}
@@ -42,11 +43,12 @@ body .wrap_content #blogContainerPostContent .dvpstctnSendBoomNews input.btnrigh
 
 body .wrap_content #blogContainerPostContent span.spnCopiedURLTitle{display:none;padding:0 5px;position: absolute;bottom: 81px;left: 0px;background: #37a934;border-radius: 3px;width: auto;color: #fff;font-size:12px;}
 body .wrap_content #blogContainerPostContent span.spnCopiedURLTitleBlogger{bottom:15px}
-body .wrap_content #blogContainerPostContent .dvpstctnSendBoomNews input.btnCopiedURLTitle{background:#37a934;color:#fff}
+body .wrap_content #blogContainerPostContent .dvpstctnSendBoomNews input.btnCopiedURLTitle {background:#37a934;color:#fff}
 
 @media screen and (max-width: 1280px) {
     .myMenu{display:none}
     .menuBtn{display:block}
+    body .wrap_content{width: 100%;}
 }
 
 @media screen and (max-width: 1180px) {
@@ -69,6 +71,15 @@ body .wrap_content #blogContainerPostContent .dvpstctnSendBoomNews input.btnCopi
     .col-sm-4{width:100%}
     #blogContainerPostContent p.plikeshare{margin-left: 18px;}
     .dv_wrapmessage .dv_displaymsg .wrap-model-msg .plikeshare{margin-left: 18px;}
+    
+}
+
+@media screen and (max-width: 768px){
+    body .wrap_content{width: 100%;}
+    body .wrap_content .dv_wrapmessage .dv_displaymsg > div{width:50%;}
+    body .wrap_content .dv_wrapmessage .dv_displaymsg img{max-height: 170px;}
+    body .wrap_content #blogContainerPostContent ul li .tareapstctn{height: 190px;}
+    #billboard .about, .featurelist{font-size:30px}
 }
 
 @media screen and (max-width: 480px){
@@ -86,9 +97,4 @@ body .wrap_content #blogContainerPostContent .dvpstctnSendBoomNews input.btnCopi
 @media screen and (max-width: 320px) {
     .wrap_containt{width:320px}
     .form-signin{max-width:330px;}
-}
-
-
-@media screen and (max-width: 768px){
-    #billboard .about, .featurelist{font-size:30px}
 }
