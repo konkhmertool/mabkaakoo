@@ -31,7 +31,7 @@ var jqXHR;
     });
     
     $("#blogContainerPostContent").on(
-    "click touchstart focus",
+    "click touchstart",
     "textarea.form-control.tareapstctn.tareapstctnblogger",
         function () {
             var textarea = this;
@@ -51,6 +51,26 @@ var jqXHR;
             // Optional highlight
             $(".tareapstctn").css("background-color", "#fdfdfd");
             $(textarea).css("background-color", "#cecece");
+
+            // Remove previous toast
+            var $toast = $("<div class='copy-toast'>✓ Copied</div>");
+            $("body").append($toast);
+
+            // make it measurable first
+            $toast.show();
+
+            var offset = $(textarea).offset();
+
+            $toast.css({
+                left: offset.left + ($(textarea).outerWidth() / 2),
+                top: offset.top + ($(textarea).outerHeight() / 2)
+            });
+
+            $toast.fadeIn(200)
+                .delay(1000)
+                .fadeOut(500, function () {
+                    //$(this).remove();
+                });
         }
     );
 
