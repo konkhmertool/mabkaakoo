@@ -27,9 +27,33 @@ var jqXHR;
     });    
     $("#blogContainerPostContent").on("click", "input.btnCopyNews", function () {
 		var tmpTxtArea = $(this).closest('li').find('.tareapstctn');
-		copyNewsBlogWp($(this),$(tmpTxtArea),true,false,false,false);
+		copyNewsBlogWp($(this),$(tmpTxtArea),false,true,false,false);
     });
     
+    $("#blogContainerPostContent").on(
+    "click touchstart focus",
+    "textarea.form-control.tareapstctn.tareapstctnblogger",
+        function () {
+            var textarea = this;
+
+            // Select all text
+            textarea.focus();
+            textarea.select();
+            textarea.setSelectionRange(0, textarea.value.length);
+
+            // Copy to clipboard
+            if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(textarea.value);
+            } else {
+            document.execCommand("copy");
+            }
+
+            // Optional highlight
+            $(".tareapstctn").css("background-color", "#fdfdfd");
+            $(textarea).css("background-color", "#cecece");
+        }
+    );
+
     function getBloggerPost(tmpBloggerId) {
         // before update content must clear the old content first
         var objurl = 'https://www.blogger.com/feeds/' + tmpBloggerId + '/posts/default?max-results=40&alt=json-in-script';
@@ -171,7 +195,7 @@ var jqXHR;
                             + "<span class='post_number post_number2'>"+ post_number +"</span>"
                             + "<textarea id='txtLinkTitle"+i+"' rows='5' cols='100%' readonly class='form-control tareapstctn tareapstctnblogger' onmouseup='mouseUpOnPc(this)'>" + tmpTextArea + "</textarea>" //onfocus='focusMe(this)'
                             + "<div class='dvpstctnSendBoomNews'>"
-                            + "<input type='button' data-blogid='"+tmpBloggerId+"' data-url='" + postUrl + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' data-desc='" + tmpDesc + "' data-tags='" + str_tags + "' data-content='"+tmpTextContent+"' class='btn btnleft btn-primary btnCopyNews' value='COPY Ctn'>"
+                            + "<input type='button' data-blogid='"+tmpBloggerId+"' data-url='" + postUrl + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' data-desc='" + tmpDesc + "' data-tags='" + str_tags + "' data-content='"+tmpTextContent+"' class='btn btnleft btn-primary btnCopyNews' value='Copy Ctn'>"
                             + "<input type='button' data-blogid='"+tmpBloggerId+"' data-url='" + tmpPostUrl + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' data-qparam='"+q_parameter+"' class='btn btnmiddle btn-primary btnShortLink' value='COPY Title'>"
                             + "<input type='button' data-toggle='modal' data-value='200' data-blogid='"+tmpBloggerId+"' data-url='" + postUrl + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' class='btn btnright btn-warning openModalPostContentSendBoomNews' value='Boom'></div>"
                             + "</li>"
@@ -243,7 +267,7 @@ var jqXHR;
 	    
 			objThis.addClass("btnCopiedURLTitle").delay(1000).queue(function(){
 	        objThis.removeClass("btnCopiedURLTitle").dequeue();
-	        objThis.prop('value', 'COPY Ctn');
+	        objThis.prop('value', 'Copy Ctn');
 	        if(objIsBtnCopyLink){objThis.prop('value', 'COPY Title');}
 	     	// clear background after 1 second
 	        //if(objThisTxt) objThisTxt.css("background-color", "#fdfdfd");

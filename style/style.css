@@ -17,8 +17,11 @@ div p{margin:0}
 
 body .wrap_content{width:1280px;margin:0 auto;padding:10px;background:#fff}
 body .wrap_content .dv_mobilepulldownrefresh{display:none;text-align:center}
+
 body .wrap_content .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio]{position: unset;margin: unset;}
-body .wrap_content .dv_wrap_domainlabel{font-size: 1.5em;}
+body .wrap_content .checkbox-inline, body .wrap_content  .radio-inline{padding: 0;margin: 0 5px 0 0;}
+
+body .wrap_content .dv_wrap_domainlabel{padding:0 10px; font-size: 1em;}
 body .wrap_content .dv_wrap_domainlabel input[type=radio]{margin-right: 5px;}
 body .wrap_content .dv_wrapmessage{width:100%;padding:0}
 body .wrap_content .dv_wrapmessage .dv_displaymsg{margin-top:5px;padding:5px 10px 0}
@@ -75,7 +78,7 @@ body .wrap_content #blogContainerPostContent .dvpstctnSendBoomNews input.btnCopi
 }
 
 @media screen and (max-width: 768px){
-    body .wrap_content{width: 100%;}
+    body .wrap_content{width: 100%;padding:10px 0}
     body .wrap_content .dv_wrapmessage .dv_displaymsg > div{width:50%;}
     body .wrap_content .dv_wrapmessage .dv_displaymsg img{max-height: 170px;}
     body .wrap_content #blogContainerPostContent ul li .tareapstctn{height: 190px;}
