@@ -29,9 +29,9 @@ var jqXHR;
 		var tmpTxtArea = $(this).closest('li').find('.tareapstctn');
 		copyNewsBlogWp($(this),$(tmpTxtArea),false,true,false,false);
     });
-    
+    //"click touchend",
     $("#blogContainerPostContent").on(
-    "click touchend",
+    "touchend",
     "textarea.form-control.tareapstctn.tareapstctnblogger",
         function (e) {
             e.preventDefault();
