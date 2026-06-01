@@ -287,7 +287,7 @@ var jqXHR;
 	    // Change value of button copy and after 1 second revert it back
 	    objThis.prop('value', 'Copied');
 		// reset the previous textarea background to default 
-	    $('.tareapstctn').css("background-color", "#fdfdfd");
+	    $('.tareapstctn').css("background", "#fdfdfd");
 	    // set background when object is not null
 	    if(objThisTxt) objThisTxt.css("background-color", "#cecece");
 	
@@ -297,7 +297,9 @@ var jqXHR;
 	        objThis.prop('value', 'Copy Ctn');
 	        if(objIsBtnCopyLink){objThis.prop('value', 'COPY Title');}
 	     	// clear background after 1 second
-	        //if(objThisTxt) objThisTxt.css("background-color", "#fdfdfd");
+	        setTimeout(function() {
+			    $('.tareapstctn').css('background', '#fdfdfd');
+			}, 1000);
 	        //Remove focus from textarea | and selected
 	        copyText.blur();
 	        // Restore the original value to textarea back
