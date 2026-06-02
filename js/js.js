@@ -191,7 +191,7 @@ var jqXHR;
                     if(q_linebreaklink==1){
                     		tmpPostUrl = tmpPostUrl + "\n\n";
                     }
-                    var tmpTextArea = tmpPostUrl + "\n" + tmpTitle;
+                    var tmpTextArea = tmpTitle  + "\n" +  tmpPostUrl;
                     if(q_comment){
                     		tmpTextArea = tmpTextArea + "\n" + q_readmore;
 					}
