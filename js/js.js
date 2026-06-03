@@ -182,7 +182,7 @@ var jqXHR;
 						var strRandom = Math.floor(Math.random()*arr_Readmore.length);
 						q_parameter = arr_Readmore[strRandom];
 						q_readmore = q_parameter + " " + arr_readmore_icon[Math.floor(Math.random()*arr_readmore_icon.length)];
-						//tmpPostUrl = q_parameter + " " + tmpPostUrl;
+						tmpPostUrl = q_parameter + " " + tmpPostUrl;
 					}
 					
 					if(q_sfb){
@@ -191,7 +191,7 @@ var jqXHR;
                     if(q_linebreaklink==1){
                     		tmpPostUrl = tmpPostUrl + "\n\n";
                     }
-                    var tmpTextArea = tmpTitle  + "\n" +  tmpPostUrl;
+                    var tmpTextArea = tmpPostUrl + "\n" +  tmpTitle;
                     if(q_comment){
                     		tmpTextArea = tmpTextArea + "\n" + q_readmore;
 					}
