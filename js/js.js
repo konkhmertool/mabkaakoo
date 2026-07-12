@@ -24,7 +24,14 @@ var jqXHR;
     $("#blogContainerPostContent").on("click", "input.btnShortLink", function () {
 		var tmpTxtArea = $(this).closest('li').find('.tareapstctn');
 		copyNewsBlogWp($(this),$(tmpTxtArea),false,false,false,true);
-    });    
+    });
+
+    $("#blogContainerPostContent").on("click", "input.btnRndLink", function () {
+        // looking for one more top li or closet after UL
+		var tmpTxtArea = $(this).closest("ul").children("li:first").find(".tareapstctn");
+        copyNewsBlogWp($(this),$(tmpTxtArea),true,false,false,false);
+    });
+
     $("#blogContainerPostContent").on("click", "input.btnCopyNews", function () {
 		var tmpTxtArea = $(this).closest('li').find('.tareapstctn');
 		copyNewsBlogWp($(this),$(tmpTxtArea),false,true,false,false);
@@ -230,7 +237,10 @@ var jqXHR;
                             + "<p><img width='50px' src='" + smallImgSrc + "' /></p>"
                             + "<p class='plikeshare'><iframe src='https://www.facebook.com/plugins/share_button.php?href=" + postUrl + "&width=118&layout=button_count&locale=en_US&size=small&mobile_iframe=true&height=46&appId' width='118' height='21' style='border:none;overflow:hidden' scrolling='no' frameborder='0' allowTransparency='true' allow='encrypted-media'></iframe></p>"
                             //+ "<div class='plikeshare'><div class='fb-share-button' data-href='" + postUrl + "' data-layout='button_count' data-size='small'><a target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=" + postUrl + "&amp;src=sdkpreparse' class='fb-xfbml-parse-ignore'>Share</a></div></div>"
+                            + "<div class='dvpstctnSendBoomNews'>"
                             + "<p class='pviewlink'><a href='" + postUrl + "' target='_blank' class='viewlinkbgg pviewbitly'>View</a></p>"
+                            + "<input type='button' data-blogid='"+tmpBloggerId+"' data-url='" + tmpPostUrl + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' data-qparam='"+q_parameter+"' class='btn btnmiddle btn-primary btnRndLink' value='COPY Random Link' style='width:auto;border-radius:unset;margin-top:-2px;padding:0 5px'>"                            
+                            +"</div>"
                             + "</li>"
                             + '<br clear="all">'
                             + "</ul></div>"
@@ -254,7 +264,7 @@ var jqXHR;
 	    	}); // End done ajax function
     } // End function getBloggerPost
     
-    function copyNewsBlogWp(objThis,objThisTxt=false,objIsButtonCopyClick = false,objIsBtnCopyContent = false, objIsTouch = false,objIsBtnCopyLink =false){
+    function copyNewsBlogWp(objThis,objThisTxt=false,objIsButtonCopyRndLink = false,objIsBtnCopyContent = false, objIsTouch = false,objIsBtnCopyLink =false){
 			// Chunk the title with zero space when button copy is clicked; calling function from [global_function.js]
 	    var tmpTitle = objThis.attr('data-title');
 	    tmpTitle = tmpTitle.replace(/\u200B/g,'');
@@ -263,8 +273,10 @@ var jqXHR;
 	    var objThisTxtId = objThisTxt.attr('id');
 	    var tmpOriginalValue = objThisTxt.val();
 	
-	    if(objIsButtonCopyClick){
-	        // Set new value of content with zerospace to text area	    		
+	    if(objIsButtonCopyRndLink){            
+	        // Set new value of content with zerospace to text area
+            let tmpUrl = "?bid=" + randomString(14);
+            objThisTxt.val(tmpOriginalValue+tmpUrl);            
 	    }
 	    // Condition when button copy description tag is click
 	    // Store all value of textarea
@@ -296,6 +308,7 @@ var jqXHR;
 	        objThis.removeClass("btnCopiedURLTitle").dequeue();
 	        objThis.prop('value', 'Copy Ctn');
 	        if(objIsBtnCopyLink){objThis.prop('value', 'COPY Title');}
+            if(objIsButtonCopyRndLink){objThis.prop('value', 'COPY Random Link');}
 	     	// clear background after 1 second
 	        setTimeout(function() {
 			    $('.tareapstctn').css('background', '#fdfdfd');
@@ -306,3 +319,14 @@ var jqXHR;
 	        objThisTxt.val(tmpOriginalValue);
 	    });     
 	} //copyNewsBlogWp
+
+    function randomString(length) {
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let result = "";
+
+        for (let i = 0; i < length; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+
+        return result;
+    }
