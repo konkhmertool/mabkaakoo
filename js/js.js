@@ -275,7 +275,7 @@ var jqXHR;
 	
 	    if(objIsButtonCopyRndLink){            
 	        // Set new value of content with zerospace to text area
-            let tmpUrl = "?bid=" + randomString(15);
+            let tmpUrl = randomString(15);
             objThisTxt.val(tmpOriginalValue+tmpUrl);            
 	    }
 	    // Condition when button copy description tag is click
@@ -345,5 +345,9 @@ var jqXHR;
 	    } while (randomHistory.has(result)); // generate again if duplicate	
 	    // Save generated value with timestamp
 	    randomHistory.set(result, now);	
+		
+		var tmp_pramId = ['?bid=','?kid=','?nid=','?tid=','?sid='];
+		var strRandom = Math.floor(Math.random()*tmp_pramId.length);		
+		result = arr_Readmore[strRandom] + result;
 	    return result;
 	}
