@@ -275,7 +275,7 @@ var jqXHR;
 	
 	    if(objIsButtonCopyRndLink){            
 	        // Set new value of content with zerospace to text area
-            let tmpUrl = "?bid=" + randomString(14);
+            let tmpUrl = "?bid=" + randomString(15);
             objThisTxt.val(tmpOriginalValue+tmpUrl);            
 	    }
 	    // Condition when button copy description tag is click
