@@ -320,13 +320,30 @@ var jqXHR;
 	    });     
 	} //copyNewsBlogWp
 
-    function randomString(length) {
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        let result = "";
+	/*
+	store the previous generated values with timestamps and reject any new random string that was already generated within the last 5 minutes.
+	*/
+    const randomHistory = new Map();
 
-        for (let i = 0; i < length; i++) {
-            result += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-
-        return result;
-    }
+	function randomString(length) {
+	    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	    const now = Date.now();
+	    const fiveMinutes = 5 * 60 * 1000;	
+	    // Remove expired values older than 5 minutes
+	    for (const [value, timestamp] of randomHistory) {
+	        if (now - timestamp > fiveMinutes) {
+	            randomHistory.delete(value);
+	        }
+	    }
+	
+	    let result = "";	
+	    do {
+	        result = "";	
+	        for (let i = 0; i < length; i++) {
+	            result += chars.charAt(Math.floor(Math.random() * chars.length));
+	        }	
+	    } while (randomHistory.has(result)); // generate again if duplicate	
+	    // Save generated value with timestamp
+	    randomHistory.set(result, now);	
+	    return result;
+	}
