@@ -348,6 +348,6 @@ var jqXHR;
 		
 		var tmp_pramId = ['?bid=','?kid=','?nid=','?tid=','?sid='];
 		var strRandom = Math.floor(Math.random()*tmp_pramId.length);		
-		result = arr_Readmore[strRandom] + result;
+		result = tmp_pramId[strRandom] + result;
 	    return result;
 	}
