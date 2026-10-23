@@ -174,7 +174,8 @@ var jqXHR;
                         
                         // Blogger 1st content is image
                         // So we need to grab the second content as description  
-                		var tmpDesc = temporaryElement.children[1].textContent;
+						// Handle temporaryElement being null or undefined too
+                		var tmpDesc = temporaryElement?.children?.[1]?.textContent ?? "";
 
                 		if(tmpDesc){
                 		  tmpDesc = tmpDesc.replace(/\u200B/g,''); // Remove zero space
