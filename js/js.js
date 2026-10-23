@@ -208,7 +208,8 @@ var jqXHR;
                     // Get the last image
 					var sqaure_img_parameter = temporaryElement.getElementsByTagName('img');
                     var last_sqaure_img = sqaure_img_parameter[sqaure_img_parameter.length-1];
-                    var last_sqaure_img_src = last_sqaure_img.src;
+					//If last_sqaure_img is null or undefined, last_sqaure_img_src will be an empty string ("").
+                    var last_sqaure_img_src = last_sqaure_img?.src ?? "";
                     var tmp_filename_noext = last_sqaure_img_src.substring(last_sqaure_img_src.lastIndexOf("/") + 1, last_sqaure_img_src.lastIndexOf("."));  
         				// indexOf() returns -1 if the string wasn't found at all.
         				// case-insensitive search
