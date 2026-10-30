@@ -4,6 +4,8 @@ const STORAGE_COLLECTION = "tbldata";
 const DOCUMENT_ID = "tmpBunchDataBlogger";
 const FIELD_NAME = "htmldata";
 const $blogContainerPostContent = $("#blogContainerPostContent");
+// tmpBunchDataBlogger will store data for catching on browser
+var tmpBunchDataBlogger = "";
 
 var jqXHR;
 var jqHTTP_or_HTTPS;
@@ -125,7 +127,7 @@ var jqHTTP_or_HTTPS;
         var objurl = 'https://www.blogger.com/feeds/' + tmpBloggerId + '/posts/default?max-results=40&alt=json-in-script';
         $('#blogContainerPostContent').html("");
         // tmpBunchDataBlogger will store data for catching on browser
-        var tmpBunchDataBlogger = "";
+        tmpBunchDataBlogger = "";
 		var countPostForBunchDataBlogger = 0;
         jqXHR = $.ajax({
             url: objurl,
@@ -293,6 +295,10 @@ var jqHTTP_or_HTTPS;
                     row_clear++;
                     post_number--;
                 }// end loop content
+
+				// save data to local storage
+                //saveBunchDataBlogger(tmpBunchDataBlogger);
+                saveBunchData();
 				
                 $(".dv_mobilepulldownrefresh").css("display", "none");
                	setTimeout(function(){
