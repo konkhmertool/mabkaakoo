@@ -24,7 +24,7 @@ var jqHTTP_or_HTTPS;
 
 // Save updated HTML to Firebase and refresh local cache.
     async function saveBunchData() {
-        const html = $blogContainerPostContent.html() || "";             
+        const html = tmpBunchDataBlogger || "";
         // 2. Save to Firebase
         try {
             const ref = await getDataRef();
