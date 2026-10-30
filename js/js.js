@@ -1,8 +1,40 @@
 /*! jQuery v3.2.1 | (c) JS Foundation and other contributors | jquery.org/license */
 
+const STORAGE_COLLECTION = "tbldata";
+const DOCUMENT_ID = "tmpBunchDataBlogger";
+const FIELD_NAME = "htmldata";
+const $blogContainerPostContent = $("#blogContainerPostContent");
 
 var jqXHR;
-    var jqHTTP_or_HTTPS;
+var jqHTTP_or_HTTPS;
+
+// Get a reference to the same Firestore document every time.
+    async function getDataRef() {
+        while (!window.db || !window.getDoc || !window.setDoc || !window.doc) {
+            await new Promise(resolve => setTimeout(resolve, 50));
+        }
+        return window.doc(
+            window.db,
+            STORAGE_COLLECTION,
+            DOCUMENT_ID
+        );
+    }
+
+// Save updated HTML to Firebase and refresh local cache.
+    async function saveBunchData() {
+        const html = $blogContainerPostContent.html() || "";             
+        // 2. Save to Firebase
+        try {
+            const ref = await getDataRef();
+            await window.setDoc(ref, {
+                [FIELD_NAME]: html
+            }, { merge: true });
+            console.log("✅ Firebase updated successfully.");
+        } catch (error) {
+            console.error("❌ Firebase save failed:", error);
+        }
+    }
+
     $("input:radio[name=optradiobloggerid]").click(function () {
         // if there is a still requesting then abort it
         if (typeof jqXHR !== 'undefined')
@@ -92,7 +124,9 @@ var jqXHR;
         // before update content must clear the old content first
         var objurl = 'https://www.blogger.com/feeds/' + tmpBloggerId + '/posts/default?max-results=40&alt=json-in-script';
         $('#blogContainerPostContent').html("");
-        
+        // tmpBunchDataBlogger will store data for catching on browser
+        var tmpBunchDataBlogger = "";
+		var countPostForBunchDataBlogger = 0;
         jqXHR = $.ajax({
             url: objurl,
             type: 'get',
@@ -224,9 +258,8 @@ var jqXHR;
                     // Replace ' and " 
                     tmpTextContent = tmpTextContent.replace(/"/g, "&quot;");
                     tmpTextContent = tmpTextContent.replace(/'/g, "&#039;");
-                    
-                    $('#blogContainerPostContent').append(
-                            '<div class="wrapContainerPostContent '+clearBoth+'">'
+
+					var tmpDataBlogger = '<div class="wrapContainerPostContent '+clearBoth+'">'
                             + "<ul>"
                             + "<li>"
                             + "<span class='post_number post_number2'>"+ post_number +"</span>"
@@ -246,8 +279,12 @@ var jqXHR;
                             +"</div>"
                             + "</li>"
                             + '<br clear="all">'
-                            + "</ul></div>"
-                            );
+                            + "</ul></div>";
+					
+					countPostForBunchDataBlogger +=1;
+					if (countPostForBunchDataBlogger <= 8) tmpBunchDataBlogger += tmpDataBlogger;
+					$blogContainerPostContent.append(tmpDataBlogger);
+					
                     if((row_clear+1) % 4 === 0){
                         clearBoth = "clear";
                     }else{
