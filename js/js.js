@@ -280,8 +280,27 @@ var jqHTTP_or_HTTPS;
                             + '<br clear="all">'
                             + "</ul></div>";
 					
+					// for Database
+					var tmpDataBlogger2 = '<div class="wrapContainerPostContent '+clearBoth+'">'
+                            + "<ul>"
+                            + "<li>"
+                            + "<span class='post_number post_number2'>"+ post_number +"</span>"
+                            + "<textarea id='txtLinkTitle"+i+"' rows='5' cols='100%' readonly class='form-control tareapstctn tareapstctnblogger' onmouseup='mouseUpOnPc(this)'>" + tmpTextArea + "</textarea>" //onfocus='focusMe(this)'
+                            + "<div class='dvpstctnSendBoomNews'>"                            
+                            + "<input type='button' data-blogid='"+tmpBloggerId+"' data-url='" + tmpPostUrl + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' data-qparam='"+q_parameter+"' class='btn btnmiddle btn-primary btnShortLink' value='Copy Title'>"
+                            + "<input type='button' data-toggle='modal' data-value='200' data-blogid='"+tmpBloggerId+"' data-url='" + postUrl + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' class='btn btnright btn-warning openModalPostContentSendBoomNews' value='Boom'></div>"
+                            + "</li>"
+                            + "<li>"
+                            + "<p><img width='50px' src='" + smallImgSrc + "' /></p>"                            
+                            + "<div class='dvpstctnSendBoomNews'>"                            
+                            + "<input type='button' data-blogid='"+tmpBloggerId+"' data-url='" + tmpPostUrl + "' data-mkmoretenrandomlink ='" + q_mkmoretenrandomlink + "' data-title='" + tmpTitle + "' data-img='" + imgSrc + "' data-qparam='"+q_parameter+"' class='btn btnmiddle btn-primary btnRndLink' value='Random Link' style='width:100%;border-radius:unset;margin-top:-2px;padding:0 6px;font-size:18px'>"                            
+                            +"</div>"
+                            + "</li>"
+                            + '<br clear="all">'
+                            + "</ul></div>";
+					
 					countPostForBunchDataBlogger +=1;
-					if (countPostForBunchDataBlogger <= 8) tmpBunchDataBlogger += tmpDataBlogger;
+					if (countPostForBunchDataBlogger <= 8) tmpBunchDataBlogger += tmpDataBlogger2;
 					$blogContainerPostContent.append(tmpDataBlogger);
 					
                     if((row_clear+1) % 4 === 0){
